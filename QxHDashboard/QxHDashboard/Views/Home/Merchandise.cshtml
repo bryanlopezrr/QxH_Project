@@ -1,0 +1,89 @@
+﻿@model List<Merchandise>
+@{
+    ViewData["Title"] = "Variant Summary";
+}
+
+<body class="variant" onload="startStream">
+
+    <div class="pageMain">
+        <div class="variant-page">
+            <div class="container-variant">
+                <header>
+                    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark ">
+                        <div class="container">
+                            <h3>
+                                <img src="~/images/3bars_menu_header.png" /> Variant Summary
+                            </h3>
+                            <div id="merchTicker">
+                                <div class="inner">
+                                    <ul position="absolute"></ul>
+                                </div>
+                            </div>
+                            @Html.DropDownList("ShowCards", new SelectList(Enum.GetValues(typeof(ShowCards))), new { @id = "showCardList" })
+                            @Html.DropDownList("Countries", new SelectList(Enum.GetValues(typeof(Countries))), new { @id = "countrylist" })
+
+                            @section Scripts
+                                {
+                                <script type="text/javascript">
+                                        $("#countrylist").change(function () {
+                                        var select = $("#countrylist").val();
+                                        $.ajax({
+                                            type: "get",
+                                            url: '@Url.Action("Merchandise", "Home")' + "/" + select,
+                                            data: {'selCountry' : select},
+                                            success: function () { }
+                                            });
+                                        });
+                                        $("#showCardList").change(function () {
+                                        var select = $("#showCardList").val();
+                                        $.ajax({
+                                            type: "get",
+                                            url: '@Url.Action("ShowCards", "Home")' + "/" + select,
+                                            data: { 'selCards': select },
+                                            success: function () { }
+                                            });
+                                        });
+                                </script>
+                            }
+                        </div>
+                    </nav>
+                </header>
+
+            </div>
+            <table class="merchTable">
+                <tr>
+                    <th width="75px">SEQ</th>
+                    <th width="125px">Item ID</th>
+                    <th width="700px">Description</th>
+                    <th width="90px">Sold</th>
+                    <th width="90px">Sold Today</th>
+                    <th width="90px">AFS</th>
+                    <th width="65px">P Mins</th>
+                    <th width="65px">A Mins</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.PlanSeqId</td>
+                        <td>@item.ItemId</td>
+                        <td>@item.ItemDescription</td>
+                        <td align="right">@item.OrderQuantity</td>
+                        <td align="right">@item.OrderSldTdy</td>
+                        <td align="right">@item.AvaiForSaleQty</td>
+                        <td align="right">@item.PlannedMinutesQty</td>
+                        <td align="right">@item.ActualMinutesQty</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="pageSide" style="height:810px; overflow-y: auto; display:block;">
+        <div id="rightPanel" style="height:100%; overflow:hidden; background-color:white;">
+            <iframe id="hsnComFrame" src="https://www.hsn.com/product-by-style/082193?Device=mobile" style="width: 98%; height:100%;"></iframe>
+        </div>
+    </div>
+
+</body>
+
+<script src="~/lib/aspnet/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/merchandise.js"></script>
