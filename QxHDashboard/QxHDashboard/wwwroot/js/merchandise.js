@@ -1,82 +1,104 @@
-﻿//if (!String.prototype.supplant) {
-//    String.prototype.supplant = function (o) {
-//        return this.replace(/{([^{}]*)}/g,
-//            function (a, b) {
-//                var r = o[b];
-//                return typeof r === 'string' || typeof r === 'number' ? r : a;
-//            }
-//        );
-//    };
-//}
+﻿var QXH = QXH || {};
+QXH.RTR = QXH.RTR || {};
+QXH.RTR.pages = QXH.RTR.pages || {};
+QXH.RTR.pages.variantSummary = {
+    self: this,
+    date: new Date(),
+    currentDateTime: new moment().format("MM/DD/YYY - h:mm a"),
+    currentDate: new moment().format("MM/DD/YYYY"),
+    currentHour: new moment().format("HH"),
+    currentHourLetter: "",
+    refreshInterval: "",
+    lastItemIdLoadedInPDPage: "",
+    lastItemIdLoadedInVariantSummary: "",
+    executionTimerStart: new moment(),
+    executionTimerEnd: new moment(),
+    highlightsValue: 0,
+    refreshRateValue: 0,
+    refreshClockIntervalId: null,
+    mostRecentSystemTimeLoaded: null,
+    localTimeOfMostRecentSystemTimeLoad: null,
 
-var variantTable = document.getElementById('variantTable');
-var variantTableBody = variantTable.getElementsByTagName('tbody')[0];
-var rowTemplate = '<td>{seqNumber}</td><td>{itemID}</td><td>{itemDesc}</td><td>{orderQty}</td><td>{orderSldTdy}</td><td>{availForSaleQty}</td><td>{plannedMins}</td><td>{actualMins}</td>';
-//var tickerTemplate = '<span class="newItem">{itemID}</span> <span class="itemDescription">{itemDesc}</span><span class="dir {directionClass}">{direction}</span>';
-//var merchTicker = document.getElementById('merchTicker');
-//var merchTickerBody = merchTicker.getElementsByTagName('ul')[0];
+    init: function () {
+        var self = this;
+        var timer = -1;
+        self.setElements();
+        $(window).resize(function () {
+            clearTimeout(timer);
+            timer = setTimeout(self.maxOutElementHeight(), 100);
+        });
+        self.highlightsValue = "0";
+        self.refreshRateValue = 5000;
+        $("#topClockCounter").show();
+    },
 
-document.getElementsByClassName("variant").onload = function () {
-    connection.invoke("StreamMerchandise");
-}
+    setElements: function () {
+        var self = this;
+        var myDate = new Date();
+        topTimer = setInterval(function () {
+            var currentMoment = new moment();
+            if (self.mostRecentSystemTimeLoaded != null) {
+                var intervalFromLastSystemTimeLoad = currentMoment.diff(self.localTimeOfMostRecentSystemTimeLoad);
+                var mostRecentSystemTimeCopy = new moment(self.mostRecentSystemTimeLoaded);
+                currentMoment = mostRecentSystemTimeCopy.add('milliseconds', intervalFromLastSystemTimeLoad);
+            }
 
-let connection = new signalR.HubConnectionBuilder()
-    .withUrl("/merchandise")
-    .build();
+            currentSeconds = parseInt(currentMoment.format("ss"));
+            secondsLeft = 60 - currentSeconds;
+            if (secondsLeft == 60) {
+                secondsLeft = 0;
+            }
+            currentMinutes = parseInt(currentMoment.format("mm"));
+            if (secondsLeft > 0) {
+                minutesLeft = 59 - currentMinutes;
+            } else {
+                minutesLeft = 60 - currentMinutes;
+            }
+            if (secondsLeft < 10) {
+                secondsLeft = "0" + secondsLeft;
+            }
+            if (minutesLeft < 10) {
+                minutesLeft = "0" + minutesLeft;
+            }
+            $("#currentTimeDisplay").html(currentMoment.format("h:mm:ss a"));
+            $("#hourCountdown").html(minutesLeft + ":" + secondsLeft);
 
-connection.start().then(function () {
-    connection.invoke("StreamMerchandise").then(function (merchandise) {
-        for (let i = 0; i < merchandise.length; i++) {
-            displayMerch(merchandise[i]);
-        }        
-    });
-    connection.stream("StreamMerchandise").subscribe({
-        close: false,
-        next: displayMerch,
-        error: function (err) {
-            logger.log(err);
-        }
-    });
-});
+            //Change countdown timer to yellow when it drops below 5 mins and red when below 2 mins.
+            if (parseInt($("hourCountdown").text()) < 2) {
+                $("#hourCountdown").css('color', '#FF3030');
+            } else if (parseInt($("#hourCountdown").text()) < 5) {
+                $("#hourCountdown").css('color', '#FFCC11');
+            } else {
+                $("#hourCountdown").css('color', '#5DFC0A');
+            }
+        }, 1000);
 
+        //initial load of system time
+        self.loadSystemTime(function () {
 
+        });
+        self.refreshClockIntervalId = setInterval(function () {
+            self.loadSystemTime(function () {
 
-//function startStreaming() {
-//    connection.stream("StreamMerchandise").subscribe({
-//        close: false,
-//        next: displayMerch,
-//        error: function (err) {
-//            logger.log(err);
-//        }
-//    });
-//}
+            })
+        }, 30000);
+    },
 
-function displayMerch(merchandise) {
-    //var displayMerch = formatMerch(merchandise);
-    addOrAppendMerch(variantTableBody, displayMerch, 'td', rowTemplate);
-}
-
-function formatMerch(merchandise) {
-    merchandise.orderSldTdy += merchandise.orderQty;
-    return merchandise;
-}
-
-function addOrAppendMerch(table, merchandise, type, template) {
-    var child = createMerchNode(merchandise, type, template);
-
-    var merchNode = document.querySelector(type + "[data-itemId" + merchandise.itemId + "]");
-    if (merchNode) {
-        var change = merchNode.querySelector(".changeValue");
-        table.replaceChild(child);
+    loadSystemTime: function (callback) {
+        var self = this;
+        var status = "success"; l
+        var url = "/Lookup/GetSystemTime";
+        $.getJSON(url, function (response) {
+            if (response.DateValue) {
+                self.mostRecentSystemTimeLoaded = new moment(new Date(parseInt(response.DateValue.substr(6))));
+                self.localTimeOfMostRecentSystemTimeLoad = new moment();
+            } else {
+                status = "nodata";
+            }
+            callback(status);
+        }).error(function () {
+            status = "error";
+            callback(status);
+        });
     }
-    else {
-        table.appendChild(child);
-    }
-}
-
-function createMerchNode(merchandise, type, template) {
-    var child = document.createElement(type);
-    child.setAttribute('data-itemId', merchandise.itemId);
-    child.innerHTML = template.supplant(merchandise);
-    return child;
-}
+};

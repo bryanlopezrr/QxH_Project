@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "a028c4b45be3de78160da28eefca6dd5fc0d5f0c"
+    "signature": "838fb9d41baae57886c423109a3bb994828222b0"
   },
   "compilationOptions": {
     "defines": [
@@ -27,8 +27,6 @@
           "Couchbase.Extensions.DependencyInjection": "2.0.2",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
-          "Microsoft.AspNetCore.SignalR.Client": "1.1.0",
-          "Microsoft.AspNetCore.SignalR.Protocols.MessagePack": "1.1.5",
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
           "System.Reactive.Linq": "4.1.5"
@@ -82,87 +80,6 @@
         },
         "compile": {
           "lib/netstandard2.0/Couchbase.NetClient.dll": {}
-        }
-      },
-      "MessagePack/1.7.3.7": {
-        "dependencies": {
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Threading.Tasks.Extensions": "4.5.2",
-          "System.ValueTuple": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/MessagePack.dll": {
-            "assemblyVersion": "1.7.3.7",
-            "fileVersion": "1.7.3.7"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/MessagePack.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.Http.Connections.Client/1.1.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Common": "1.1.0",
-          "Microsoft.Extensions.Logging.Abstractions": "2.2.0"
-        },
-        "runtime": {
-          "lib/netcoreapp2.2/Microsoft.AspNetCore.Http.Connections.Client.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.0.18316"
-          }
-        },
-        "compile": {
-          "lib/netcoreapp2.2/Microsoft.AspNetCore.Http.Connections.Client.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.SignalR.Client/1.1.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Connections.Client": "1.1.0",
-          "Microsoft.AspNetCore.SignalR.Client.Core": "1.1.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.0.18316"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.SignalR.Client.Core/1.1.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.SignalR.Common": "1.1.0",
-          "Microsoft.AspNetCore.SignalR.Protocols.Json": "1.1.0",
-          "Microsoft.Extensions.DependencyInjection": "2.2.0",
-          "Microsoft.Extensions.Logging": "2.2.0",
-          "System.Threading.Channels": "4.5.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.Core.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.0.18316"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.Core.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.SignalR.Protocols.MessagePack/1.1.5": {
-        "dependencies": {
-          "MessagePack": "1.7.3.7",
-          "Microsoft.AspNetCore.SignalR.Common": "1.1.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.MessagePack.dll": {
-            "assemblyVersion": "1.1.5.0",
-            "fileVersion": "1.1.5.19109"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Protocols.MessagePack.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
@@ -3881,41 +3798,6 @@
       "sha512": "sha512-gY1QMl4Sobw1FhvJKydrMboUjLgiHhlKYVeD0YCxUszpj+OCQf6vcOI8JMaHgmgbKjdm6A8YNa236pVU7rzhuA==",
       "path": "couchbasenetclient/2.5.9",
       "hashPath": "couchbasenetclient.2.5.9.nupkg.sha512"
-    },
-    "MessagePack/1.7.3.7": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-gyJ8m987yI1O7h4P2DS7YjOfOWqJ+WcvX/jST+vYxCt004FYRm6cHfCK20fa1ehpQhOwRIezVennku+pFWwtiw==",
-      "path": "messagepack/1.7.3.7",
-      "hashPath": "messagepack.1.7.3.7.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Http.Connections.Client/1.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mT4nYSuNG9dY48swtnT8mP4HX/QbF8J71MjhoUZVcf9ZY6DwW9sNq3tBKZngpVwPmUYRgR06VuIVzmo4f4HzGg==",
-      "path": "microsoft.aspnetcore.http.connections.client/1.1.0",
-      "hashPath": "microsoft.aspnetcore.http.connections.client.1.1.0.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.SignalR.Client/1.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-sJ59ETvqOZYcN1AaMsLt4lSraZ6B79GnLcA79UGYVe5Nbr0KoECyMR0QES9VQhS4SA12o4UnY/lXglOYQtZM1A==",
-      "path": "microsoft.aspnetcore.signalr.client/1.1.0",
-      "hashPath": "microsoft.aspnetcore.signalr.client.1.1.0.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.SignalR.Client.Core/1.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Ym4QER7Qp2dZnsrSGPQix8eKVrbK3tsV+jxc+RGbcdvFNjlpXiOfSjomPyuH7RLs6eb25aHRuXE+Rjisuo09GA==",
-      "path": "microsoft.aspnetcore.signalr.client.core/1.1.0",
-      "hashPath": "microsoft.aspnetcore.signalr.client.core.1.1.0.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.SignalR.Protocols.MessagePack/1.1.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-GEfEzUT0b4doXLekKDmE+kUoDMhHfq5UbeANOPLiLGsiNfwb3QqQHENYLxyKsviNtJVFMJcCWdzf3EKvCVSP9Q==",
-      "path": "microsoft.aspnetcore.signalr.protocols.messagepack/1.1.5",
-      "hashPath": "microsoft.aspnetcore.signalr.protocols.messagepack.1.1.5.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",

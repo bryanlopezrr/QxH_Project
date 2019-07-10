@@ -9,9 +9,8 @@ using Couchbase.Extensions.DependencyInjection;
 using Couchbase.N1QL;
 using Microsoft.AspNetCore.Mvc;
 using QxHDashboard.Models;
-using QxHDashboard.Hubs;
-using Microsoft.AspNetCore.SignalR;
 using System.Threading;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace QxHDashboard.Controllers
 {
@@ -23,35 +22,10 @@ namespace QxHDashboard.Controllers
         private readonly Subject<Merchandise> _subject = new Subject<Merchandise>();
         private volatile bool _updateMerchSold;
 
-        public HomeController(IBucketProvider bucketProvider, IHubContext<MerchandiseHub> hub)
+        public HomeController(IBucketProvider bucketProvider)
         {
-            Hub = hub;
             _bucketProvider = bucketProvider;
-        }
-
-        private IHubContext<MerchandiseHub> Hub
-        {
-            get;
-            set;
-        }
-
-        public IEnumerable<Merchandise> GetAllMerchandise()
-        {
-
-            var bucket = _bucketProvider.GetBucket("MerchUSA");
-            var n1ql = @"SELECT g.*, META(g).id
-                                FROM `MerchUSA` g
-                                WHERE g.CompanyId = 0
-                                LIMIT 20;";
-            var query = QueryRequest.Create(n1ql);
-            var results = bucket.Query<Merchandise>(query);
-            return results.Rows;
-        }
-
-        public IObservable<Merchandise> StreamMerchandise()
-        {
-            return _subject;
-        }
+        }       
 
         private async void UpdateMerchSold(object state)
         {
@@ -93,9 +67,8 @@ namespace QxHDashboard.Controllers
             return View();
         }
 
-        public IActionResult Merchandise(Countries selCountry)
-        {
-
+        public IActionResult Merchandise(Countries selCountry, ShowCards selCards)
+        {          
             switch (selCountry)
             {
                 case Countries.USA:
@@ -103,7 +76,8 @@ namespace QxHDashboard.Controllers
                     var n1ql = @"SELECT g.*, META(g).id
                                 FROM `MerchUSA` g
                                 WHERE g.CompanyId = 0
-                                LIMIT 20;";
+                                AND g.ShowCd = '" + selCards + "' " +
+                                "LIMIT 20;";
                     var query = QueryRequest.Create(n1ql);
                     var results = bucket.Query<Merchandise>(query);
                     UpdateMerchSold(results.Rows);
@@ -113,7 +87,8 @@ namespace QxHDashboard.Controllers
                     var n1ql2 = @"SELECT g.*, META(g).id
                                 FROM `MerchEUR` g
                                 WHERE g.CompanyId = 1
-                                LIMIT 20;";
+                                AND g.ShowCd = '" + selCards + "' " +
+                                "LIMIT 20;";
                     var query2 = QueryRequest.Create(n1ql2);
                     var results2 = bucket2.Query<Merchandise>(query2);
                     UpdateMerchSold(results2.Rows);
@@ -122,8 +97,9 @@ namespace QxHDashboard.Controllers
                     var bucket3 = _bucketProvider.GetBucket("MerchJPN");
                     var n1ql3 = @"SELECT g.*, META(g).id
                                 FROM `MerchJPN` g
-                                WHERE g.CompanyId = 2;
-                                LIMIT 20;";
+                                WHERE g.CompanyId = 2
+                                AND ShowCd = '" + selCards + "' " +
+                                "LIMIT 20;";
                     var query3 = QueryRequest.Create(n1ql3);
                     var results3 = bucket3.Query<Merchandise>(query3);
                     UpdateMerchSold(results3.Rows);
@@ -132,10 +108,10 @@ namespace QxHDashboard.Controllers
             return View();
         }
 
-        public IActionResult ShowCards(ShowCards selCards)
-        {
-            return View();
-        }
+        //public IActionResult ShowCards(ShowCards selCards)
+        //{            
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

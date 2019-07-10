@@ -3,7 +3,7 @@
     ViewData["Title"] = "Variant Summary";
 }
 
-<body class="variant" onload="startStream">
+<body class="variant" id="load">
 
     <div class="pageMain">
         <div class="variant-page">
@@ -13,44 +13,21 @@
                         <div class="container">
                             <h3>
                                 <img src="~/images/3bars_menu_header.png" /> Variant Summary
-                            </h3>
-                            <div id="merchTicker">
-                                <div class="inner">
-                                    <ul position="absolute"></ul>
-                                </div>
-                            </div>
+                            </h3>                            
                             @Html.DropDownList("ShowCards", new SelectList(Enum.GetValues(typeof(ShowCards))), new { @id = "showCardList" })
-                            @Html.DropDownList("Countries", new SelectList(Enum.GetValues(typeof(Countries))), new { @id = "countrylist" })
-
-                            @section Scripts
-                                {
-                                <script type="text/javascript">
-                                        $("#countrylist").change(function () {
-                                        var select = $("#countrylist").val();
-                                        $.ajax({
-                                            type: "get",
-                                            url: '@Url.Action("Merchandise", "Home")' + "/" + select,
-                                            data: {'selCountry' : select},
-                                            success: function () { }
-                                            });
-                                        });
-                                        $("#showCardList").change(function () {
-                                        var select = $("#showCardList").val();
-                                        $.ajax({
-                                            type: "get",
-                                            url: '@Url.Action("ShowCards", "Home")' + "/" + select,
-                                            data: { 'selCards': select },
-                                            success: function () { }
-                                            });
-                                        });
-                                </script>
-                            }
+                            @Html.DropDownList("Countries", new SelectList(Enum.GetValues(typeof(Countries))), new { @id = "countryList" }) 
+                        <div class="toggleSwitch">
+                            <label class="switch">
+                                <input type="checkbox" checked />
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
                         </div>
                     </nav>
                 </header>
 
             </div>
-            <table class="merchTable">
+            <table class="merchTable" id="block">
                 <tr>
                     <th width="75px">SEQ</th>
                     <th width="125px">Item ID</th>
@@ -61,17 +38,20 @@
                     <th width="65px">P Mins</th>
                     <th width="65px">A Mins</th>
                 </tr>
+                <tr>
+                    <td></td>
+                </tr>
                 @foreach (var item in Model)
-                {
+                {                    
                     <tr>
-                        <td>@item.PlanSeqId</td>
-                        <td>@item.ItemId</td>
-                        <td>@item.ItemDescription</td>
-                        <td align="right">@item.OrderQuantity</td>
-                        <td align="right">@item.OrderSldTdy</td>
-                        <td align="right">@item.AvaiForSaleQty</td>
-                        <td align="right">@item.PlannedMinutesQty</td>
-                        <td align="right">@item.ActualMinutesQty</td>
+                        <td width="75px">@item.PlanSeqId</td>
+                        <td width="125px">@item.ItemId</td>
+                        <td width="700px">@item.ItemDescription</td>
+                        <td width=90px align="right">@item.OrderQuantity</td>
+                        <td width=90px align="right">@item.OrderSldTdy</td>
+                        <td width=90px align="right">@item.AvaiForSaleQty</td>
+                        <td width=65px align="right">@item.PlannedMinutesQty</td>
+                        <td width=65px align="right">@item.ActualMinutesQty</td>
                     </tr>
                 }
             </table>
@@ -85,5 +65,30 @@
 
 </body>
 
-<script src="~/lib/aspnet/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/merchandise.js"></script>
+@section Scripts
+    {
+    <script type="text/javascript">        
+
+        $("#countryList").change(function list() {
+            var select = $("#countryList").val();
+            var select2 = $("#showCardList").val();
+            $.ajax({
+                type: "get",
+                url: '@Url.Action("Merchandise", "Home")' + "/" + select + "," + select2,
+                data: {'selCountry' : select, 'selCards' : select2},
+                success: function (data) {
+                    $('.variant').html(data);                    
+                    $("#countryList").change(list); //call the function again                    
+                }
+            });
+        });              
+        
+        //function autoRefreshPage() {            
+        //    window.location = window.location.href;
+        //}
+        //setInterval('autoRefreshPage()', 5000);
+
+        
+
+    </script>
+}

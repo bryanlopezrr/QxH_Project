@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using QxHDashboard.Hubs;
 
 namespace QxHDashboard
 {
@@ -37,7 +36,6 @@ namespace QxHDashboard
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddSignalR().AddMessagePackProtocol();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,12 +54,7 @@ namespace QxHDashboard
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
-
-            app.UseSignalR(routes =>
-            {
-                routes.MapHub<MerchandiseHub>("/merchandise");
-            });
+            app.UseCookiePolicy();            
 
             app.UseMvc(routes =>
             {
