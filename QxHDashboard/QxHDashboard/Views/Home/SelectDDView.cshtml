@@ -1,4 +1,4 @@
-﻿@model List<Merchandise>
+﻿@model QxHDashboard.Models.MerchandiseViewModel
 @{
     ViewData["Title"] = "Variant Summary";
 }
@@ -13,19 +13,20 @@
                         <div class="container">
                             <h3>
                                 <img src="~/images/3bars_menu_header.png" /> Variant Summary
-                            </h3>                            
-                            @Html.DropDownList("ShowCards", new SelectList(Enum.GetValues(typeof(ShowCards))), new { @id = "showCardList" })
-                            @Html.DropDownList("Countries", new SelectList(Enum.GetValues(typeof(Countries))), new { @id = "countryList" }) 
-                        <div class="toggleSwitch">
-                            <label class="switch">
-                                <input type="checkbox" checked />
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
+                            </h3>
+                            <form asp-action="SelectDDView" method="post" id="formSelect">
+                                <asp:UpdatePanel runat="server" id="UpdatePanel" updatemode="Conditional">
+                                <select asp-for="SelectedNetworkId" asp-items="Model.networks" id="merchSelect" style="margin-left: 1em;"></select>
+                                <select asp-for="SelectedCountryId" asp-items="Model.countries" id="merchSelect" style="margin-left: 1em;"></select>
+                                <select asp-for="SelectedCardId" asp-items="Model.cards" id="merchSelect" style="margin-left: 1em;"></select>
+                                    <Triggers>
+                                <input type="submit" value="Update" class="btn btn-light" style="margin-left: 1em;" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </form>
                         </div>
                     </nav>
                 </header>
-
             </div>
             <table class="merchTable" id="block">
                 <tr>
@@ -41,9 +42,9 @@
                 <tr>
                     <td></td>
                 </tr>
-                @foreach (var item in Model)
-                {                    
-                    <tr>
+                @foreach (var item in Model.merchandise)
+                {
+                    <tr id="merchRow">
                         <td width="75px">@item.PlanSeqId</td>
                         <td width="125px">@item.ItemId</td>
                         <td width="700px">@item.ItemDescription</td>
@@ -55,11 +56,12 @@
                     </tr>
                 }
             </table>
-        </div>
+            
+        </div>        
     </div>
     <div class="pageSide" style="height:810px; overflow-y: auto; display:block;">
         <div id="rightPanel" style="height:100%; overflow:hidden; background-color:white;">
-            <iframe id="hsnComFrame" src="https://www.hsn.com/product-by-style/082193?Device=mobile" style="width: 98%; height:100%;"></iframe>
+            <iframe id="hsnComFrame" src="https://www.hsn.com/product-by-style/677560?Device=mobile" style="width: 98%; height:100%;"></iframe>
         </div>
     </div>
 
@@ -67,9 +69,15 @@
 
 @section Scripts
     {
-    <script type="text/javascript">        
+    <script type="text/javascript">   
+        //$("")
 
-        $("#countryList").change(function list() {
+        //setInterval("myFunction();", 1000);
+        //function myFunction() {
+        //    $("#merchPartial").load(location.href + "#block");
+        //}
+        
+        @*$("#countryList").change(function list() {
             var select = $("#countryList").val();
             var select2 = $("#showCardList").val();
             $.ajax({
@@ -81,7 +89,27 @@
                     $("#countryList").change(list); //call the function again                    
                 }
             });
-        });              
+        });*@    
+
+        @*$("#countryList").change(function list() {
+            var select = $("#countryList").val();
+            var select2 = $("#showCardList").val();
+            $.ajax({
+                type: "get",
+                url: '@Url.Action("Merchandise", "Home")' + "/" + select + "," + select2,
+                data: {'selCountry' : select, 'selCards' : select2},
+                success: function (data) {
+                    $('.merchTable').html(data);                    
+                    //$("#countryList").change(list); //call the function again                    
+                }
+            });
+        });*@     
+
+        //function CallAction()
+
+        //var refreshTable = setInterval(function () {
+        //    $(".merchTable").load('/home/selectddview');
+        //}, 5000);
         
         //function autoRefreshPage() {            
         //    window.location = window.location.href;

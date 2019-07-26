@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QxHDashboard.Controllers;
 
 namespace QxHDashboard
 {
@@ -33,6 +34,7 @@ namespace QxHDashboard
             });
 
             services.AddCouchbase(Configuration.GetSection("Couchbase"));
+            //services.AddHostedService<TimedHostedService>();            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

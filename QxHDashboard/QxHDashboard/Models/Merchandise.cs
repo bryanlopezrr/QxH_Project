@@ -22,13 +22,21 @@ namespace QxHDashboard.Models
         public string ShowCd { get; set; }
     }
 
-    public enum Countries
+    public class Country
     {
-        USA, EUR, JPN
+        public int CountryId { get; set; }
+        public string CountryName { get; set; }
     }
 
-    public enum ShowCards
+    public class Card
     {
-        A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
+        public int CardId { get; set; }
+        public string CardLetter { get; set; }
+    }
+
+    public class Network
+    {
+        public int NetworkId { get; set; }
+        public string NetworkName { get; set; }
     }
 }

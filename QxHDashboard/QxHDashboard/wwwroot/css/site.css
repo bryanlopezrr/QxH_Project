@@ -146,6 +146,10 @@ div.container {
     background-color: #c6caeb;
 }
 
+select #merchSelect {
+    margin-left: 2em;
+}
+
 /*--------------Slider Button-------------------*/
 div.toggleSwitch {
     vertical-align: middle;
