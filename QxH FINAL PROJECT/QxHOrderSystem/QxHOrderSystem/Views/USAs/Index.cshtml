@@ -1,0 +1,77 @@
+﻿@model List<QxHOrderSystem.Models.USA>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order Quantity</th>
+                <th>
+                    Item Id
+                </th>
+                <th>
+                    Item Description
+                </th>                
+                <th>
+                    Available For Sale
+                </th>
+                <th>Show Card</th>
+                <th>Show Time</th>
+                <th>Country</th>
+                <th>Network</th>                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(int i = 0; i < Model.Count(); i++)
+            {            
+                <tr>
+                    <td>
+                        @*<input type="submit" class="btn btn-outline-dark" value="Order" />*@
+                        <form asp-action="Order">
+                            <input type="submit" class="btn btn-outline-dark" value="Order" />
+                            @Html.Hidden("id", Model[i].ItemId)
+                        <input asp-for="@Model[i].InputQty" name="InputQty" class="form-control" id="inputQty" value="" />
+                        </form>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].ItemId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].ItemDescription)
+                    </td>                    
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].AvaiForSaleQty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].ShowCd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].ShowDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].CompanyId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].NetworkId)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@Model[i].ItemId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@Model[i].ItemId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@Model[i].ItemId">Delete</a>
+                    </td>
+
+                </tr>
+            
+            }
+        </tbody>
+    </table>

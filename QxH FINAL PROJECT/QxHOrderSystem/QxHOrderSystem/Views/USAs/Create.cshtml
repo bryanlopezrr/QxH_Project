@@ -1,0 +1,83 @@
+﻿@model QxHOrderSystem.Models.USA
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>USA</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PlanSeqId" class="control-label"></label>
+                <input asp-for="PlanSeqId" class="form-control" />
+                <span asp-validation-for="PlanSeqId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemDescription" class="control-label"></label>
+                <input asp-for="ItemDescription" class="form-control" />
+                <span asp-validation-for="ItemDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderQuantity" class="control-label"></label>
+                <input asp-for="OrderQuantity" class="form-control" />
+                <span asp-validation-for="OrderQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderSldTdy" class="control-label"></label>
+                <input asp-for="OrderSldTdy" class="form-control" />
+                <span asp-validation-for="OrderSldTdy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlannedMinutesQty" class="control-label"></label>
+                <input asp-for="PlannedMinutesQty" class="form-control" />
+                <span asp-validation-for="PlannedMinutesQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActualMinutesQty" class="control-label"></label>
+                <input asp-for="ActualMinutesQty" class="form-control" />
+                <span asp-validation-for="ActualMinutesQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NetworkId" class="control-label"></label>
+                <input asp-for="NetworkId" class="form-control" />
+                <span asp-validation-for="NetworkId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyId" class="control-label"></label>
+                <input asp-for="CompanyId" class="form-control" />
+                <span asp-validation-for="CompanyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvaiForSaleQty" class="control-label"></label>
+                <input asp-for="AvaiForSaleQty" class="form-control" />
+                <span asp-validation-for="AvaiForSaleQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShowDate" class="control-label"></label>
+                <input asp-for="ShowDate" class="form-control" />
+                <span asp-validation-for="ShowDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShowCd" class="control-label"></label>
+                <input asp-for="ShowCd" class="form-control" />
+                <span asp-validation-for="ShowCd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
