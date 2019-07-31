@@ -48,7 +48,7 @@ namespace QxHOrderSystem.Controllers
 
             if(!String.IsNullOrEmpty(searchString))
             {
-                items = items.Where(i => i.itemDescription.Contains(searchString));
+                items = items.Where(i => i.itemDescription.Contains(searchString) || i.itemId.ToString().Contains(searchString));
             }
 
             switch(sortOrder)
@@ -85,7 +85,7 @@ namespace QxHOrderSystem.Controllers
                     break;
             }
 
-            int pageSize = 6;
+            int pageSize = 15;
 
             return View(await PaginatedList<USA>.CreateAsync(items.AsNoTracking(), pageNumber ?? 1, pageSize));
             //return View(await items.AsNoTracking().ToListAsync());

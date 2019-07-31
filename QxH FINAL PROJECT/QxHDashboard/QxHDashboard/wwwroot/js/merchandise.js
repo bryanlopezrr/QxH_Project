@@ -33,6 +33,8 @@ $.ajax({
             htmlAttribute.children('.6').text(parsedele.avaiForSaleQty);
             htmlAttribute.children('.7').text(parsedele.plannedMinutesQty);
             htmlAttribute.children('.8').text(parsedele.actualMinutesQty);
+
+            htmlAttribute.css('increase');
         }
     }
 })
