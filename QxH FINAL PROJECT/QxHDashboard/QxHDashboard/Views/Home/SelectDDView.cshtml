@@ -20,7 +20,8 @@
                                 <select asp-for="SelectedCountryId" asp-items="Model.countries" id="merchSelect" style="margin-left: 1em;"></select>
                                 <select asp-for="SelectedCardId" asp-items="Model.cards" id="merchSelect" style="margin-left: 1em;"></select>
                                     <Triggers>
-                                <input type="submit" value="Update" class="btn btn-light" style="margin-left: 1em;" />
+                                <input type="submit" value="Update" id="autoSubmit" class="btn btn-light" style="margin-left: 1em;" />
+                                        
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </form>
@@ -44,15 +45,15 @@
                 </tr>
                 @foreach (var item in Model.merchandise)
                 {
-                    <tr id="merchRow">
-                        <td width="75px">@item.PlanSeqId</td>
-                        <td width="125px">@item.ItemId</td>
-                        <td width="700px">@item.ItemDescription</td>
-                        <td width=90px align="right">@item.OrderQuantity</td>
-                        <td width=90px align="right">@item.OrderSldTdy</td>
-                        <td width=90px align="right">@item.AvaiForSaleQty</td>
-                        <td width=65px align="right">@item.PlannedMinutesQty</td>
-                        <td width=65px align="right">@item.ActualMinutesQty</td>
+                    <tr id="merchRow" data-item-type="@item.ItemId">
+                        <td class="1" width="75px">@item.PlanSeqId</td>
+                        <td class="2"  width="125px">@item.ItemId</td>
+                        <td class="3" width="700px">@item.ItemDescription</td>
+                        <td class="4" width=90px align="right">@item.OrderQuantity</td>
+                        <td class="5" width=90px align="right">@item.OrderSldTdy</td>
+                        <td class="6" width=90px align="right">@item.AvaiForSaleQty</td>
+                        <td class="7" width=65px align="right">@item.PlannedMinutesQty</td>
+                        <td class="8" width=65px align="right">@item.ActualMinutesQty</td>
                     </tr>
                 }
             </table>
@@ -61,7 +62,7 @@
     </div>
     <div class="pageSide" style="height:810px; overflow-y: auto; display:block;">
         <div id="rightPanel" style="height:100%; overflow:hidden; background-color:white;">
-            <iframe id="hsnComFrame" src="https://www.hsn.com/product-by-style/677560?Device=mobile" style="width: 98%; height:100%;"></iframe>
+            <iframe id="hsnComFrame" src="https://www.hsn.com/product-by-style/083408?Device=mobile" style="width: 98%; height:100%;"></iframe>
         </div>
     </div>
 
@@ -69,54 +70,6 @@
 
 @section Scripts
     {
-    <script type="text/javascript">   
-        //$("")
-
-        //setInterval("myFunction();", 1000);
-        //function myFunction() {
-        //    $("#merchPartial").load(location.href + "#block");
-        //}
-        
-        @*$("#countryList").change(function list() {
-            var select = $("#countryList").val();
-            var select2 = $("#showCardList").val();
-            $.ajax({
-                type: "get",
-                url: '@Url.Action("Merchandise", "Home")' + "/" + select + "," + select2,
-                data: {'selCountry' : select, 'selCards' : select2},
-                success: function (data) {
-                    $('.variant').html(data);                    
-                    $("#countryList").change(list); //call the function again                    
-                }
-            });
-        });*@    
-
-        @*$("#countryList").change(function list() {
-            var select = $("#countryList").val();
-            var select2 = $("#showCardList").val();
-            $.ajax({
-                type: "get",
-                url: '@Url.Action("Merchandise", "Home")' + "/" + select + "," + select2,
-                data: {'selCountry' : select, 'selCards' : select2},
-                success: function (data) {
-                    $('.merchTable').html(data);                    
-                    //$("#countryList").change(list); //call the function again                    
-                }
-            });
-        });*@     
-
-        //function CallAction()
-
-        //var refreshTable = setInterval(function () {
-        //    $(".merchTable").load('/home/selectddview');
-        //}, 5000);
-        
-        //function autoRefreshPage() {            
-        //    window.location = window.location.href;
-        //}
-        //setInterval('autoRefreshPage()', 5000);
-
-        
-
-    </script>
+    
+    <script src="~/js/merchandise.js"></script>
 }

@@ -10,18 +10,19 @@ namespace QxHOrderSystem.Models
     public class USA
     {
         [Key]
-        public int ItemId { get; set; }
-        public int PlanSeqId { get; set; }
-        public string ItemDescription { get; set; }
-        public int OrderQuantity { get; set; }
-        public int OrderSldTdy { get; set; }
-        public int PlannedMinutesQty { get; set; }
-        public int ActualMinutesQty { get; set; }
-        public int NetworkId { get; set; }
-        public int CompanyId { get; set; }
-        public int AvaiForSaleQty { get; set; }
-        public DateTime ShowDate { get; set; }
-        public string ShowCd { get; set; }
+        public int ShowItemId { get; set; }
+        public int itemId { get; set; }
+        public int planSeqId { get; set; }
+        public string itemDescription { get; set; }
+        public int orderQuantity { get; set; }
+        public int orderSldTdy { get; set; }
+        public int plannedMinutesQty { get; set; }
+        public int actualMinutesQty { get; set; }
+        public int networkId { get; set; }
+        public int companyId { get; set; }
+        public int avaiForSaleQty { get; set; }
+        public DateTime showDate { get; set; }
+        public string showCd { get; set; }
         [NotMapped]
         public int InputQty { get; set; } 
     }

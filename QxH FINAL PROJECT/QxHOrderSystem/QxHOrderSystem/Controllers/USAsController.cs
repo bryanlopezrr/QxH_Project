@@ -25,9 +25,70 @@ namespace QxHOrderSystem.Controllers
 
         // GET: USAs
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
-            return View(await _context.USA.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["ItemIdSortParam"] = sortOrder == "itemId" ? "itemId_desc" : "itemId";
+            ViewData["ShowCdSortParam"] = String.IsNullOrEmpty(sortOrder) ? "showCd_desc" : "";
+            ViewData["ShowCdSortParam"] = String.IsNullOrEmpty(sortOrder) ? "showCd" : "";
+            ViewData["PlanSeqSortParam"] = sortOrder == "planSeqId" ? "seqId_desc" : "planSeqId";
+            ViewData["NetworkSortParam"] = sortOrder == "networkId" ? "netId_desc" : "networkId";
+            ViewData["CompanySortParam"] = sortOrder == "companyid" ? "compId_desc" : "companyid";
+
+            if (searchString != null)
+                pageNumber = 1;
+            else
+                searchString = currentFilter;
+
+            ViewData["CurrentFilter"] = searchString;
+            
+            
+            var items = from i in _context.USA
+                        select i;
+
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(i => i.itemDescription.Contains(searchString));
+            }
+
+            switch(sortOrder)
+            {
+                case "itemId_desc":
+                    items = items.OrderByDescending(i => i.itemId);
+                    break;               
+                case "showCd_desc":
+                    items = items.OrderByDescending(i => i.showCd);
+                    break;
+                case "showCd":
+                    items = items.OrderBy(i => i.showCd);
+                    break;
+                case "seqId_desc":
+                    items = items.OrderByDescending(i => i.planSeqId);
+                    break;
+                case "planSeqId":
+                    items = items.OrderBy(i => i.planSeqId);
+                    break;
+                case "netId_desc":
+                    items = items.OrderByDescending(i => i.networkId);
+                    break;
+                case "networkId":
+                    items = items.OrderBy(i => i.networkId);
+                    break;
+                case "compId_desc":
+                    items = items.OrderByDescending(i => i.companyId);
+                    break;
+                case "companyId":
+                    items = items.OrderBy(i => i.companyId);
+                    break;
+                default:
+                    items = items.OrderBy(i => i.itemId);
+                    break;
+            }
+
+            int pageSize = 6;
+
+            return View(await PaginatedList<USA>.CreateAsync(items.AsNoTracking(), pageNumber ?? 1, pageSize));
+            //return View(await items.AsNoTracking().ToListAsync());
         }
 
         //[HttpPost]
@@ -39,7 +100,7 @@ namespace QxHOrderSystem.Controllers
             //}
 
             USA obj = new USA();
-            obj.ItemId = id;
+            obj.ShowItemId = id;
             obj.InputQty = InputQty;
 
             string path = Directory.GetCurrentDirectory();
@@ -52,7 +113,7 @@ namespace QxHOrderSystem.Controllers
 
             var item = await _context.USA
                 //.Where(q => q.InputQty == qty)
-                .FirstOrDefaultAsync(u => u.ItemId == id);
+                .FirstOrDefaultAsync(u => u.ShowItemId == id);
 
             //if (item.AvaiForSaleQty != 0 && item.AvaiForSaleQty - item.OrderQuantity >= 0)
             //{
@@ -62,18 +123,19 @@ namespace QxHOrderSystem.Controllers
                     {
                         connection.Open();
                         DynamicParameters parameter = new DynamicParameters();
-                        parameter.Add("@CompanyId", item.CompanyId, DbType.Int32, ParameterDirection.Input);
-                        parameter.Add("@ItemId", item.ItemId, DbType.Int32, ParameterDirection.Input);
-                        parameter.Add("@PlanSeqId", item.PlanSeqId, DbType.Int32, ParameterDirection.Input);
-                        parameter.Add("@ItemDescription", item.ItemDescription, DbType.String, ParameterDirection.Input);
-                        parameter.Add("@OrderQuantity", item.OrderQuantity, DbType.Int32, ParameterDirection.Input);
-                        parameter.Add("@OrderSldTdy", item.OrderSldTdy, DbType.Int32, ParameterDirection.Input);
-                        parameter.Add("@PlannedMinutesQty", item.PlannedMinutesQty, DbType.Int32, ParameterDirection.Input);
-                        parameter.Add("@ActualMinutesQty", item.ActualMinutesQty, DbType.Int32, ParameterDirection.Input);
-                        parameter.Add("@NetworkId", item.NetworkId, DbType.Int32, ParameterDirection.Input);
-                        parameter.Add("@AvaiForSaleQty", item.AvaiForSaleQty, DbType.Int32, ParameterDirection.Input);
-                        parameter.Add("@ShowDate", item.ShowDate, DbType.String, ParameterDirection.Input);
-                        parameter.Add("@ShowCd", item.ShowCd, DbType.String, ParameterDirection.Input);
+                        parameter.Add("@ShowItemId", item.ShowItemId, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@CompanyId", item.companyId, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@ItemId", item.itemId, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@PlanSeqId", item.planSeqId, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@ItemDescription", item.itemDescription, DbType.String, ParameterDirection.Input);
+                        parameter.Add("@OrderQuantity", item.orderQuantity, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@OrderSldTdy", item.orderSldTdy, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@PlannedMinutesQty", item.plannedMinutesQty, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@ActualMinutesQty", item.actualMinutesQty, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@NetworkId", item.networkId, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@AvaiForSaleQty", item.avaiForSaleQty, DbType.Int32, ParameterDirection.Input);
+                        parameter.Add("@ShowDate", item.showDate, DbType.String, ParameterDirection.Input);
+                        parameter.Add("@ShowCd", item.showCd, DbType.String, ParameterDirection.Input);
                         parameter.Add("@InputQty", obj.InputQty, DbType.Int32, ParameterDirection.Input); 
                         connection.Execute(sql, parameter, commandType: CommandType.StoredProcedure);
                         //return RedirectToAction(nameof(Index));
@@ -102,7 +164,7 @@ namespace QxHOrderSystem.Controllers
             }
 
             var uSA = await _context.USA
-                .FirstOrDefaultAsync(m => m.ItemId == id);
+                .FirstOrDefaultAsync(m => m.itemId == id);
             if (uSA == null)
             {
                 return NotFound();
@@ -156,7 +218,7 @@ namespace QxHOrderSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ItemId,PlanSeqId,ItemDescription,OrderQuantity,OrderSldTdy,PlannedMinutesQty,ActualMinutesQty,NetworkId,CompanyId,AvaiForSaleQty,ShowDate,ShowCd")] USA uSA)
         {
-            if (id != uSA.ItemId)
+            if (id != uSA.itemId)
             {
                 return NotFound();
             }
@@ -170,7 +232,7 @@ namespace QxHOrderSystem.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!USAExists(uSA.ItemId))
+                    if (!USAExists(uSA.itemId))
                     {
                         return NotFound();
                     }
@@ -193,7 +255,7 @@ namespace QxHOrderSystem.Controllers
             }
 
             var uSA = await _context.USA
-                .FirstOrDefaultAsync(m => m.ItemId == id);
+                .FirstOrDefaultAsync(m => m.itemId == id);
             if (uSA == null)
             {
                 return NotFound();
@@ -215,7 +277,7 @@ namespace QxHOrderSystem.Controllers
 
         private bool USAExists(int id)
         {
-            return _context.USA.Any(e => e.ItemId == id);
+            return _context.USA.Any(e => e.itemId == id);
         }
     }
 }

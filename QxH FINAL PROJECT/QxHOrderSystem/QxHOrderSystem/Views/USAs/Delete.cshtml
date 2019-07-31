@@ -12,75 +12,75 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PlanSeqId)
+            @Html.DisplayNameFor(model => model.planSeqId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PlanSeqId)
+            @Html.DisplayFor(model => model.planSeqId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemDescription)
+            @Html.DisplayNameFor(model => model.itemDescription)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ItemDescription)
+            @Html.DisplayFor(model => model.itemDescription)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OrderQuantity)
+            @Html.DisplayNameFor(model => model.orderQuantity)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OrderQuantity)
+            @Html.DisplayFor(model => model.orderQuantity)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OrderSldTdy)
+            @Html.DisplayNameFor(model => model.orderSldTdy)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OrderSldTdy)
+            @Html.DisplayFor(model => model.orderSldTdy)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PlannedMinutesQty)
+            @Html.DisplayNameFor(model => model.plannedMinutesQty)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PlannedMinutesQty)
+            @Html.DisplayFor(model => model.plannedMinutesQty)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ActualMinutesQty)
+            @Html.DisplayNameFor(model => model.actualMinutesQty)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ActualMinutesQty)
+            @Html.DisplayFor(model => model.actualMinutesQty)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NetworkId)
+            @Html.DisplayNameFor(model => model.networkId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NetworkId)
+            @Html.DisplayFor(model => model.networkId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CompanyId)
+            @Html.DisplayNameFor(model => model.companyId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CompanyId)
+            @Html.DisplayFor(model => model.companyId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AvaiForSaleQty)
+            @Html.DisplayNameFor(model => model.avaiForSaleQty)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AvaiForSaleQty)
+            @Html.DisplayFor(model => model.avaiForSaleQty)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ShowDate)
+            @Html.DisplayNameFor(model => model.showDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShowDate)
+            @Html.DisplayFor(model => model.showDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ShowCd)
+            @Html.DisplayNameFor(model => model.showCd)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShowCd)
+            @Html.DisplayFor(model => model.showCd)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="ItemId" />
+        <input type="hidden" asp-for="ShowItemId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

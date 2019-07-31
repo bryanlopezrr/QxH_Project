@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace QxHDashboard.Models
 {
@@ -20,6 +17,8 @@ namespace QxHDashboard.Models
         public List<SelectListItem> networks { get; set; }
         public int SelectedNetworkId { get; set; }
         public Network SelectedNetwork { get; set; }
+
+        public List<Merchandise> dateTime { get; set; }
 
         public List<Merchandise> merchandise { get; set; }
     }

@@ -1,77 +1,107 @@
-﻿@model List<QxHOrderSystem.Models.USA>
+﻿@*@model IEnumerable<QxHOrderSystem.Models.USA>*@
+@model PaginatedList<QxHOrderSystem.Models.USA>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Item Description: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
 
-    <table class="table">
+
+    <table class="table" id="header-fixed">
         <thead>
             <tr>
                 <th>Order Quantity</th>
                 <th>
-                    Item Id
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["ItemIdSortParam"]">Item Id</a>
                 </th>
+                <th>Item Description</th>                
+                <th>Available For Sale</th>
                 <th>
-                    Item Description
-                </th>                
-                <th>
-                    Available For Sale
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["ShowCdSortParam"]">Show Card</a>
                 </th>
-                <th>Show Card</th>
                 <th>Show Time</th>
-                <th>Country</th>
-                <th>Network</th>                
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["CompanySortParam"]">Company Id</a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["NetworkSortParam"]">Network Id</a>
+                </th>                
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @for(int i = 0; i < Model.Count(); i++)
-            {            
+            @foreach (var item in Model)
+{
                 <tr>
-                    <td>
-                        @*<input type="submit" class="btn btn-outline-dark" value="Order" />*@
+                    <td>                        
                         <form asp-action="Order">
                             <input type="submit" class="btn btn-outline-dark" value="Order" />
-                            @Html.Hidden("id", Model[i].ItemId)
-                        <input asp-for="@Model[i].InputQty" name="InputQty" class="form-control" id="inputQty" value="" />
+                            @Html.Hidden("id", item.ShowItemId)
+                        <input asp-for="@item.InputQty" name="InputQty" class="form-control" id="inputQty" value="" />
                         </form>
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => Model[i].ItemId)
+                        @Html.DisplayFor(modelItem => item.itemId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => Model[i].ItemDescription)
+                        @Html.DisplayFor(modelItem => item.itemDescription)
                     </td>                    
                     <td>
-                        @Html.DisplayFor(modelItem => Model[i].AvaiForSaleQty)
+                        @Html.DisplayFor(modelItem => item.avaiForSaleQty)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => Model[i].ShowCd)
+                        @Html.DisplayFor(modelItem => item.showCd)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => Model[i].ShowDate)
+                        @Html.DisplayFor(modelItem => item.showDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => Model[i].CompanyId)
+                        @Html.DisplayFor(modelItem => item.companyId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => Model[i].NetworkId)
+                        @Html.DisplayFor(modelItem => item.networkId)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@Model[i].ItemId">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@Model[i].ItemId">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@Model[i].ItemId">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.ShowItemId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ShowItemId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ShowItemId">Delete</a>
                     </td>
 
                 </tr>
-            
-            }
+
+}
         </tbody>
     </table>
+
+@{ 
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
