@@ -1,16 +1,8 @@
-﻿
-//document.getElementById("autoSubmit").addEventListener('submit', functSubmit)
-//window.onload = pageLoad;
-window.onload = functSubmit;
-
-//function pageLoad() {
-//    var updateButton = document.getElementById("#autoSubmit");
-//    updateButton.onclick = functSubmit;
-//}
+﻿window.onload = functSubmit;
 
 function functSubmit() {
-    //console.log('test');        
-    setInterval("reloadTable();", 5000);
+    //console.log('test');    
+    setInterval(reloadTable, 5000);
 }
 
 function reloadTable() {
@@ -24,7 +16,7 @@ $.ajax({
             //console.log("p" + JSON.stringify(parseData[i]));
             var ele = JSON.stringify(parseData[i]);
             var parsedele = JSON.parse(ele);
-            var htmlAttribute = $('[data-item-type="' + parsedele.itemId + '"]');
+            var htmlAttribute = $('[data-item-type="' + parsedele.Id + '"]');
             htmlAttribute.children('.1').text(parsedele.planSeqId);
             htmlAttribute.children('.2').text(parsedele.itemId);
             htmlAttribute.children('.3').text(parsedele.itemDescription);
@@ -32,10 +24,9 @@ $.ajax({
             htmlAttribute.children('.5').text(parsedele.orderSldTdy);
             htmlAttribute.children('.6').text(parsedele.avaiForSaleQty);
             htmlAttribute.children('.7').text(parsedele.plannedMinutesQty);
-            htmlAttribute.children('.8').text(parsedele.actualMinutesQty);
-
-            htmlAttribute.css('increase');
+            htmlAttribute.children('.8').text(parsedele.actualMinutesQty);            
         }
     }
 })
 }
+

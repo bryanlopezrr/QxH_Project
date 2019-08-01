@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +21,8 @@ namespace QxHDashboard.Models
         public int AvaiForSaleQty { get; set; }
         public string ShowDate { get; set; }
         public string ShowCd { get; set; }
+        [NotMapped]
+        public int ChangeStatus { get; set; }
     }
 
     public class Country

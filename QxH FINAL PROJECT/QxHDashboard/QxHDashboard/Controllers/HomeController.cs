@@ -174,9 +174,9 @@ namespace QxHDashboard.Controllers
 
             model.SelectedCard.CardLetter = GetTime(DateTime.Now, model);
 
-            NetworkId = model.SelectedNetworkId;
-            CompanyId = model.SelectedCountryId;
-            CardId = model.SelectedCardId;
+            //NetworkId = model.SelectedNetworkId;
+            //CompanyId = model.SelectedCountryId;
+            //CardId = model.SelectedCardId;
 
             string countryName = FindCountryName(model.SelectedCountry.CountryId);
             var bucket = _bucketProvider.GetBucket(countryName);
@@ -226,11 +226,11 @@ namespace QxHDashboard.Controllers
                                      {
                                          NetworkId = int.Parse(n.Value),
                                          NetworkName = n.Text
-                                     }).FirstOrDefault();
+                                     }).FirstOrDefault();            
 
-            NetworkId = model.SelectedNetworkId;
-            CompanyId = model.SelectedCountryId;
-            CardId = model.SelectedCardId;
+            //NetworkId = model.SelectedNetworkId;
+            //CompanyId = model.SelectedCountryId;
+            //CardId = model.SelectedCardId;
 
             string countryName = FindCountryName(model.SelectedCountry.CountryId);
             var bucket = _bucketProvider.GetBucket(countryName);
@@ -366,10 +366,5 @@ namespace QxHDashboard.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-    }
-
-    class TimerState
-    {
-        public int Counter;
     }    
 }
