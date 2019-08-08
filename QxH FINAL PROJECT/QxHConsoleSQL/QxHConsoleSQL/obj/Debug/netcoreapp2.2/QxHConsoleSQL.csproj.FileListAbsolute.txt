@@ -20,3 +20,14 @@ C:\Users\Robert Leatherman\Desktop\HSN Internship\QxH FINAL PROJECT\QxHConsoleSQ
 C:\Users\Robert Leatherman\Desktop\HSN Internship\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\obj\Debug\netcoreapp2.2\QxHConsoleSQL.AssemblyInfo.cs
 C:\Users\Robert Leatherman\Desktop\HSN Internship\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\obj\Debug\netcoreapp2.2\QxHConsoleSQL.dll
 C:\Users\Robert Leatherman\Desktop\HSN Internship\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\obj\Debug\netcoreapp2.2\QxHConsoleSQL.pdb
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\bin\Debug\netcoreapp2.2\QxHConsoleSQL.deps.json
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\bin\Debug\netcoreapp2.2\QxHConsoleSQL.runtimeconfig.json
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\bin\Debug\netcoreapp2.2\QxHConsoleSQL.runtimeconfig.dev.json
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\bin\Debug\netcoreapp2.2\QxHConsoleSQL.dll
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\bin\Debug\netcoreapp2.2\QxHConsoleSQL.pdb
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\obj\Debug\netcoreapp2.2\QxHConsoleSQL.csprojAssemblyReference.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\obj\Debug\netcoreapp2.2\QxHConsoleSQL.csproj.CoreCompileInputs.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\obj\Debug\netcoreapp2.2\QxHConsoleSQL.AssemblyInfoInputs.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\obj\Debug\netcoreapp2.2\QxHConsoleSQL.AssemblyInfo.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\obj\Debug\netcoreapp2.2\QxHConsoleSQL.dll
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHConsoleSQL\QxHConsoleSQL\obj\Debug\netcoreapp2.2\QxHConsoleSQL.pdb

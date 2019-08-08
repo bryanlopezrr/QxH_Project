@@ -63,3 +63,37 @@ C:\Users\Robert Leatherman\Desktop\HSN Internship\QxH FINAL PROJECT\QxHDashboard
 C:\Users\Robert Leatherman\Desktop\HSN Internship\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\Robert Leatherman\Desktop\HSN Internship\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
 C:\Users\Robert Leatherman\Desktop\HSN Internship\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\bin\Debug\netcoreapp2.2\QxHDashboard.deps.json
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\bin\Debug\netcoreapp2.2\QxHDashboard.runtimeconfig.json
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\bin\Debug\netcoreapp2.2\QxHDashboard.runtimeconfig.dev.json
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\bin\Debug\netcoreapp2.2\QxHDashboard.dll
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\bin\Debug\netcoreapp2.2\QxHDashboard.pdb
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\bin\Debug\netcoreapp2.2\QxHDashboard.Views.dll
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\bin\Debug\netcoreapp2.2\QxHDashboard.Views.pdb
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.csprojAssemblyReference.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.csproj.CoreCompileInputs.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.RazorAssemblyInfo.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.RazorAssemblyInfo.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.AssemblyInfoInputs.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.AssemblyInfo.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.TagHelpers.input.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.TagHelpers.output.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.RazorCoreGenerate.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\Home\SelectDDView.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.RazorTargetAssemblyInfo.cache
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.RazorTargetAssemblyInfo.cs
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.Views.pdb
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.dll
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.pdb
+C:\Users\bryan\OneDrive\Desktop\HSNProj2.0\QxH FINAL PROJECT\QxHDashboard\QxHDashboard\obj\Debug\netcoreapp2.2\QxHDashboard.csproj.CopyComplete
